@@ -60,7 +60,8 @@ def report_format(collected_nodes):
                          index=['params', 'memory(MB)', 'MAdd', 'Flops', 'duration[%]',
                                 'MemRead(B)', 'MemWrite(B)', 'MemR+W(B)'],
                          name='total')
-    df = df.append(total_df)
+    # df = df.append(total_df)
+    df = pd.concat([df, pd.DataFrame([total_df])], ignore_index=True)
 
     df = df.fillna(' ')
     df['memory(MB)'] = df['memory(MB)'].apply(
